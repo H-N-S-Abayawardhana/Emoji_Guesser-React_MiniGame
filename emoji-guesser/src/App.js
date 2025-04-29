@@ -1,4 +1,3 @@
-// App.js - Main component with game logic
 import React, { useState, useEffect } from 'react';
 import EmojiCard from './EmojiCard';
 import Result from './Result';
@@ -6,7 +5,7 @@ import emojiData from './data';
 import './styles.css';
 
 function App() {
-  // State for tracking game progress
+  
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);

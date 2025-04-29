@@ -1,4 +1,4 @@
-// EmojiCard.js - Component for displaying emoji and answer options
+
 import React from 'react';
 import './styles.css';
 
