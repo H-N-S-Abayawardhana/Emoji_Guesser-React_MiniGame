@@ -13,11 +13,11 @@ function App() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [shuffledOptions, setShuffledOptions] = useState([]);
 
-  // Shuffle the options whenever the question changes
+ 
   useEffect(() => {
     if (gameOver) return;
     
-    // Get current question and shuffle its options
+ 
     const currentQuestion = emojiData[currentQuestionIndex];
     const shuffled = [...currentQuestion.options].sort(() => 0.5 - Math.random());
     setShuffledOptions(shuffled);
