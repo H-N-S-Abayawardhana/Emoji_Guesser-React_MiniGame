@@ -1,23 +1,98 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js - Main component with game logic
+import React, { useState, useEffect } from 'react';
+import EmojiCard from './EmojiCard';
+import Result from './Result';
+import emojiData from './data';
+import './styles.css';
 
 function App() {
+  // State for tracking game progress
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [shuffledOptions, setShuffledOptions] = useState([]);
+
+  // Shuffle the options whenever the question changes
+  useEffect(() => {
+    if (gameOver) return;
+    
+    // Get current question and shuffle its options
+    const currentQuestion = emojiData[currentQuestionIndex];
+    const shuffled = [...currentQuestion.options].sort(() => 0.5 - Math.random());
+    setShuffledOptions(shuffled);
+  }, [currentQuestionIndex, gameOver]);
+
+  // Handle when user selects an answer
+  const handleAnswer = (selectedOption) => {
+    const currentQuestion = emojiData[currentQuestionIndex];
+    const correct = selectedOption === currentQuestion.correct;
+    
+    // Update score if correct
+    if (correct) {
+      setScore(score + 1);
+    }
+    
+    // Show feedback briefly
+    setIsCorrect(correct);
+    setShowFeedback(true);
+    
+    // Move to next question after delay
+    setTimeout(() => {
+      setShowFeedback(false);
+      
+      // Check if we've reached the end
+      if (currentQuestionIndex < emojiData.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      } else {
+        setGameOver(true);
+      }
+    }, 1000);
+  };
+
+  // Reset the game to start over
+  const restartGame = () => {
+    setCurrentQuestionIndex(0);
+    setScore(0);
+    setGameOver(false);
+    setShowFeedback(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>AI Emoji Guesser</h1>
+      
+      {!gameOver ? (
+        <div className="game-container">
+          <div className="progress">
+            Question {currentQuestionIndex + 1}/{emojiData.length}
+          </div>
+          
+          <EmojiCard 
+            emoji={emojiData[currentQuestionIndex].emoji}
+            options={shuffledOptions}
+            onAnswer={handleAnswer}
+            disabled={showFeedback}
+          />
+          
+          {showFeedback && (
+            <div className={`feedback ${isCorrect ? 'correct' : 'wrong'}`}>
+              {isCorrect ? 'Correct! ✅' : 'Wrong! ❌'}
+            </div>
+          )}
+          
+          <div className="score-display">
+            Score: {score}
+          </div>
+        </div>
+      ) : (
+        <Result 
+          score={score} 
+          total={emojiData.length} 
+          onRestart={restartGame} 
+        />
+      )}
     </div>
   );
 }
