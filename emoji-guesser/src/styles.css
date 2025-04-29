@@ -1,0 +1,134 @@
+/* styles.css - Styling for the Emoji Guesser game */
+
+/* Base app styling */
+.app {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  /* Game container */
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .progress {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  /* Emoji card styling */
+  .emoji-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .emoji {
+    font-size: 72px;
+    margin-bottom: 24px;
+    animation: bounce 0.5s ease;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .option-btn {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .option-btn:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+  }
+  
+  .option-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  /* Feedback styles */
+  .feedback {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 12px 0;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+  
+  .feedback.correct {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .feedback.wrong {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .score-display {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  /* Results screen */
+  .result-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .score {
+    font-size: 24px;
+    color: #4caf50;
+    font-weight: bold;
+  }
+  
+  .restart-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .restart-btn:hover {
+    background-color: #388e3c;
+    transform: translateY(-2px);
+  }
+  
+  /* Animations */
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+  }
