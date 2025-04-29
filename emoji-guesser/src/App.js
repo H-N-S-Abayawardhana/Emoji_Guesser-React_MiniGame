@@ -23,12 +23,12 @@ function App() {
     setShuffledOptions(shuffled);
   }, [currentQuestionIndex, gameOver]);
 
-  // Handle when user selects an answer
+  
   const handleAnswer = (selectedOption) => {
     const currentQuestion = emojiData[currentQuestionIndex];
     const correct = selectedOption === currentQuestion.correct;
     
-    // Update score if correct
+ 
     if (correct) {
       setScore(score + 1);
     }
