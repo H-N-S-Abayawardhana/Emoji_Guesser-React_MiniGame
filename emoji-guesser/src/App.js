@@ -33,15 +33,15 @@ function App() {
       setScore(score + 1);
     }
     
-    // Show feedback briefly
+    
     setIsCorrect(correct);
     setShowFeedback(true);
     
-    // Move to next question after delay
+   
     setTimeout(() => {
       setShowFeedback(false);
       
-      // Check if we've reached the end
+
       if (currentQuestionIndex < emojiData.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
       } else {
