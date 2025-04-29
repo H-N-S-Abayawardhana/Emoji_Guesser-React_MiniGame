@@ -1,4 +1,4 @@
-// data.js - Contains emoji questions and answers
+
 const emojiData = [
     { emoji: "😊", correct: "Smiling", options: ["Smiling", "Crying", "Surprised"] },
     { emoji: "🤔", correct: "Thinking", options: ["Confused", "Thinking", "Angry"] },
