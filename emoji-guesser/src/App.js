@@ -50,7 +50,7 @@ function App() {
     }, 1000);
   };
 
-  // Reset the game to start over
+  // Reset the game to start again
   const restartGame = () => {
     setCurrentQuestionIndex(0);
     setScore(0);
