@@ -2,6 +2,7 @@
 import React from 'react';
 import './styles.css';
 
+
 const EmojiCard = ({ emoji, options, onAnswer, disabled }) => {
   return (
     <div className="emoji-card">
